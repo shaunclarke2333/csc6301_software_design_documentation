@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module AreaCalculator1</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">AreaCalculator1</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/c/Users/clarkes/Documents/mack/mscs/csc6301_software_design_doc/week2_from_python_to_java/shaun_clarke_csc6301/AreaCalculator1.py">/mnt/c/Users/clarkes/Documents/mack/mscs/csc6301_software_design_doc/week2_from_python_to_java/shaun_clarke_csc6301/AreaCalculator1.py</a></td></tr></table>
+    <p><span class="code">Area&nbsp;calculator&nbsp;module&nbsp;for&nbsp;geometric&nbsp;area&nbsp;calculations.<br>
+&nbsp;<br>
+Author:&nbsp;Shaun&nbsp;Clarke<br>
+Course:&nbsp;CSC6301<br>
+Date:&nbsp;5/22/2026<br>
+&nbsp;<br>
+Provides&nbsp;the&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;class&nbsp;with&nbsp;utility&nbsp;methods&nbsp;for&nbsp;computing<br>
+the&nbsp;area&nbsp;of&nbsp;basic&nbsp;geometric&nbsp;shapes.&nbsp;This&nbsp;initial&nbsp;version&nbsp;supports<br>
+rectangle&nbsp;area&nbsp;calculations&nbsp;based&nbsp;on&nbsp;a&nbsp;given&nbsp;length&nbsp;and&nbsp;width.<br>
+&nbsp;<br>
+Typical&nbsp;usage&nbsp;would&nbsp;be:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;area_calculator&nbsp;import&nbsp;<a href="#AreaCalculator">AreaCalculator</a><br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;calc:&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;=&nbsp;<a href="#AreaCalculator">AreaCalculator</a>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;area:&nbsp;float&nbsp;=&nbsp;calc.calculate_rectangle_area(length=5.0,&nbsp;width=3.0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(area)</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="AreaCalculator1.html#AreaCalculator">AreaCalculator</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="AreaCalculator">class <strong>AreaCalculator</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#AreaCalculator">AreaCalculator</a>()&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Provides&nbsp;utility&nbsp;methods&nbsp;for&nbsp;geometric&nbsp;area&nbsp;calculations.<br>
+&nbsp;<br>
+An&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;instance&nbsp;exposes&nbsp;methods&nbsp;for&nbsp;computing&nbsp;the&nbsp;area<br>
+of&nbsp;geometric&nbsp;shapes.&nbsp;The&nbsp;class&nbsp;itself&nbsp;holds&nbsp;no&nbsp;state;&nbsp;each&nbsp;method<br>
+operates&nbsp;purely&nbsp;on&nbsp;the&nbsp;parameters&nbsp;provided&nbsp;to&nbsp;it.&nbsp;This&nbsp;mirrors&nbsp;the<br>
+Java&nbsp;utility&nbsp;class&nbsp;pattern&nbsp;but&nbsp;in&nbsp;Python.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None.&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;is&nbsp;a&nbsp;stateless&nbsp;utility&nbsp;class.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="AreaCalculator-__init__"><strong>__init__</strong></a>(self) -&gt; None</dt><dd><span class="code">Create&nbsp;a&nbsp;new&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;instance.<br>
+&nbsp;<br>
+The&nbsp;constructor&nbsp;takes&nbsp;no&nbsp;arguments&nbsp;and&nbsp;performs&nbsp;no&nbsp;setup,&nbsp;as<br>
+the&nbsp;class&nbsp;is&nbsp;stateless.&nbsp;It&nbsp;exists&nbsp;to&nbsp;mirror&nbsp;the&nbsp;Java<br>
+<a href="#AreaCalculator">AreaCalculator</a>()&nbsp;default&nbsp;constructor.</span></dd></dl>
+
+<dl><dt><a name="AreaCalculator-calculate_rectangle_area"><strong>calculate_rectangle_area</strong></a>(self, length: float, width: float) -&gt; float</dt><dd><span class="code">Calculate&nbsp;the&nbsp;area&nbsp;of&nbsp;a&nbsp;rectangle&nbsp;based&nbsp;on&nbsp;its&nbsp;length&nbsp;and&nbsp;width.<br>
+&nbsp;<br>
+Multiplies&nbsp;the&nbsp;two&nbsp;supplied&nbsp;dimensions&nbsp;and&nbsp;returns&nbsp;the&nbsp;result.<br>
+Both&nbsp;inputs&nbsp;are&nbsp;expected&nbsp;to&nbsp;be&nbsp;non&nbsp;negative&nbsp;floating&nbsp;point<br>
+values&nbsp;representing&nbsp;the&nbsp;rectangle's&nbsp;sides&nbsp;in&nbsp;the&nbsp;same&nbsp;unit.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;vertical&nbsp;or&nbsp;horizontal&nbsp;extent&nbsp;of&nbsp;the&nbsp;rectangle.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;horizontal&nbsp;or&nbsp;vertical&nbsp;extent&nbsp;of&nbsp;the&nbsp;rectangle.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;total&nbsp;area&nbsp;as&nbsp;the&nbsp;product&nbsp;of&nbsp;length&nbsp;and&nbsp;width.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-main"><strong>main</strong></a>() -&gt; None</dt><dd><span class="code">Run&nbsp;the&nbsp;interactive&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;menu&nbsp;loop.<br>
+&nbsp;<br>
+Displays&nbsp;a&nbsp;menu&nbsp;that&nbsp;lets&nbsp;the&nbsp;user&nbsp;calculate&nbsp;a&nbsp;rectangle's&nbsp;area<br>
+by&nbsp;entering&nbsp;a&nbsp;length&nbsp;and&nbsp;a&nbsp;width,&nbsp;or&nbsp;exit&nbsp;the&nbsp;program.&nbsp;The&nbsp;loop<br>
+continues&nbsp;until&nbsp;the&nbsp;user&nbsp;selects&nbsp;the&nbsp;exit&nbsp;option.</span></dd></dl>
+</td></tr></table>
+</body></html>

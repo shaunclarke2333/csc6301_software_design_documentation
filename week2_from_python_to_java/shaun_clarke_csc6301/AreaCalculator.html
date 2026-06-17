@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module AreaCalculator</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">AreaCalculator</strong> (version 2.0)</td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/c/Users/clarkes/Documents/mack/mscs/csc6301_software_design_doc/week2_from_python_to_java/shaun_clarke_csc6301/AreaCalculator.py">/mnt/c/Users/clarkes/Documents/mack/mscs/csc6301_software_design_doc/week2_from_python_to_java/shaun_clarke_csc6301/AreaCalculator.py</a></td></tr></table>
+    <p><span class="code">Area&nbsp;calculator&nbsp;module&nbsp;for&nbsp;geometric&nbsp;area&nbsp;calculations.<br>
+&nbsp;<br>
+Author:&nbsp;Shaun&nbsp;Clarke<br>
+Version:&nbsp;2.0<br>
+Course:&nbsp;CSC6301<br>
+Date:&nbsp;5/22/2026<br>
+&nbsp;<br>
+Provides&nbsp;the&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;class&nbsp;with&nbsp;utility&nbsp;methods&nbsp;for&nbsp;computing<br>
+the&nbsp;area&nbsp;of&nbsp;basic&nbsp;geometric&nbsp;shapes.&nbsp;This&nbsp;version&nbsp;supports&nbsp;rectangle<br>
+and&nbsp;triangle&nbsp;area&nbsp;calculations&nbsp;and&nbsp;includes&nbsp;an&nbsp;interactive&nbsp;prompt<br>
+that&nbsp;asks&nbsp;the&nbsp;user&nbsp;for&nbsp;their&nbsp;name,&nbsp;the&nbsp;shape&nbsp;to&nbsp;calculate,&nbsp;and&nbsp;the<br>
+required&nbsp;dimensions.<br>
+&nbsp;<br>
+Typical&nbsp;usage&nbsp;would&nbsp;be:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;area_calculator&nbsp;import&nbsp;<a href="#AreaCalculator">AreaCalculator</a><br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;calc:&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;=&nbsp;<a href="#AreaCalculator">AreaCalculator</a>()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rect_area:&nbsp;float&nbsp;=&nbsp;calc.calculate_rectangle_area(length=10.0,&nbsp;width=2.0)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tri_area:&nbsp;float&nbsp;=&nbsp;calc.calculate_triangle_area(base=10.0,&nbsp;height=4.0)<br>
+&nbsp;<br>
+To&nbsp;run&nbsp;interactively:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;area_calculator.py</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="AreaCalculator.html#AreaCalculator">AreaCalculator</a>
+</dt></dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="AreaCalculator">class <strong>AreaCalculator</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#AreaCalculator">AreaCalculator</a>()&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Provides&nbsp;utility&nbsp;methods&nbsp;for&nbsp;geometric&nbsp;area&nbsp;calculations.<br>
+&nbsp;<br>
+An&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;instance&nbsp;exposes&nbsp;methods&nbsp;for&nbsp;computing&nbsp;the&nbsp;area<br>
+of&nbsp;geometric&nbsp;shapes.&nbsp;The&nbsp;class&nbsp;itself&nbsp;holds&nbsp;no&nbsp;state;&nbsp;each&nbsp;method<br>
+operates&nbsp;purely&nbsp;on&nbsp;the&nbsp;parameters&nbsp;provided&nbsp;to&nbsp;it.&nbsp;This&nbsp;mirrors&nbsp;the<br>
+Java&nbsp;utility&nbsp;class&nbsp;pattern&nbsp;but&nbsp;in&nbsp;Python.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None.&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;is&nbsp;a&nbsp;stateless&nbsp;utility&nbsp;class.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="AreaCalculator-__init__"><strong>__init__</strong></a>(self) -&gt; None</dt><dd><span class="code">Create&nbsp;a&nbsp;new&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;instance.<br>
+&nbsp;<br>
+The&nbsp;constructor&nbsp;takes&nbsp;no&nbsp;arguments&nbsp;and&nbsp;performs&nbsp;no&nbsp;setup,&nbsp;as<br>
+the&nbsp;class&nbsp;is&nbsp;stateless.&nbsp;It&nbsp;exists&nbsp;to&nbsp;mirror&nbsp;the&nbsp;Java<br>
+<a href="#AreaCalculator">AreaCalculator</a>()&nbsp;default&nbsp;constructor.</span></dd></dl>
+
+<dl><dt><a name="AreaCalculator-calculate_rectangle_area"><strong>calculate_rectangle_area</strong></a>(self, length: float, width: float) -&gt; float</dt><dd><span class="code">Calculate&nbsp;the&nbsp;area&nbsp;of&nbsp;a&nbsp;rectangle&nbsp;based&nbsp;on&nbsp;its&nbsp;length&nbsp;and&nbsp;width.<br>
+&nbsp;<br>
+Multiplies&nbsp;the&nbsp;two&nbsp;supplied&nbsp;dimensions&nbsp;and&nbsp;returns&nbsp;the&nbsp;result.<br>
+Both&nbsp;inputs&nbsp;are&nbsp;expected&nbsp;to&nbsp;be&nbsp;non&nbsp;negative&nbsp;floating&nbsp;point<br>
+values&nbsp;representing&nbsp;the&nbsp;rectangle's&nbsp;sides&nbsp;in&nbsp;the&nbsp;same&nbsp;unit.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;vertical&nbsp;or&nbsp;horizontal&nbsp;extent&nbsp;of&nbsp;the&nbsp;rectangle.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;width&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;horizontal&nbsp;or&nbsp;vertical&nbsp;extent&nbsp;of&nbsp;the&nbsp;rectangle.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;total&nbsp;area&nbsp;as&nbsp;the&nbsp;product&nbsp;of&nbsp;length&nbsp;and&nbsp;width.</span></dd></dl>
+
+<dl><dt><a name="AreaCalculator-calculate_triangle_area"><strong>calculate_triangle_area</strong></a>(self, base: float, height: float) -&gt; float</dt><dd><span class="code">Calculate&nbsp;the&nbsp;area&nbsp;of&nbsp;a&nbsp;triangle&nbsp;based&nbsp;on&nbsp;its&nbsp;base&nbsp;and&nbsp;height.<br>
+&nbsp;<br>
+Applies&nbsp;the&nbsp;standard&nbsp;formula&nbsp;(base&nbsp;*&nbsp;height)&nbsp;/&nbsp;2&nbsp;to&nbsp;compute<br>
+the&nbsp;area&nbsp;of&nbsp;a&nbsp;triangle.&nbsp;Both&nbsp;inputs&nbsp;are&nbsp;expected&nbsp;to&nbsp;be<br>
+non-negative&nbsp;floating&nbsp;point&nbsp;values&nbsp;measured&nbsp;in&nbsp;the&nbsp;same&nbsp;unit.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;base&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;length&nbsp;of&nbsp;the&nbsp;triangle's&nbsp;base.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;perpendicular&nbsp;height&nbsp;from&nbsp;the&nbsp;base&nbsp;to&nbsp;the&nbsp;opposite<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vertex.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;total&nbsp;area&nbsp;as&nbsp;(base&nbsp;*&nbsp;height)&nbsp;/&nbsp;2.</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-main"><strong>main</strong></a>() -&gt; None</dt><dd><span class="code">Run&nbsp;the&nbsp;interactive&nbsp;<a href="#AreaCalculator">AreaCalculator</a>&nbsp;prompt.<br>
+&nbsp;<br>
+Prompts&nbsp;the&nbsp;user&nbsp;for&nbsp;their&nbsp;name,&nbsp;asks&nbsp;them&nbsp;to&nbsp;choose&nbsp;a&nbsp;shape<br>
+rectangle&nbsp;or&nbsp;triangle,&nbsp;collects&nbsp;the&nbsp;required&nbsp;dimensions,&nbsp;and<br>
+prints&nbsp;a&nbsp;personalized&nbsp;message&nbsp;containing&nbsp;the&nbsp;calculated&nbsp;area.<br>
+&nbsp;<br>
+Notes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Input&nbsp;is&nbsp;read&nbsp;with&nbsp;the&nbsp;built-in&nbsp;input()&nbsp;function,&nbsp;which&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Python's&nbsp;equivalent&nbsp;of&nbsp;Java's&nbsp;java.util.Scanner.&nbsp;An&nbsp;if&nbsp;elif<br>
+&nbsp;&nbsp;&nbsp;&nbsp;block&nbsp;dispatches&nbsp;to&nbsp;the&nbsp;correct&nbsp;calculation&nbsp;method&nbsp;based&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;user's&nbsp;choice.</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor author-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Author</strong></td></tr>
+    
+<tr><td class="decor author-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn">Shaun&nbsp;Clarke</td></tr></table>
+</body></html>

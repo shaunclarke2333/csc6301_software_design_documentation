@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module smart_device</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">smart_device</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/mnt/c/Users/clarkes/Documents/mack/mscs/csc6301_software_design_doc/week3_defining_classes_using_java/shaun_clarke_csc6301/smart_device.py">/mnt/c/Users/clarkes/Documents/mack/mscs/csc6301_software_design_doc/week3_defining_classes_using_java/shaun_clarke_csc6301/smart_device.py</a></td></tr></table>
+    <p><span class="code">Smart&nbsp;device&nbsp;module&nbsp;for&nbsp;the&nbsp;smart&nbsp;home&nbsp;device&nbsp;manager&nbsp;system.<br>
+&nbsp;<br>
+Author:&nbsp;Shaun&nbsp;Clarke<br>
+Course:&nbsp;CSC6301<br>
+Date:&nbsp;5/22/2026<br>
+&nbsp;<br>
+Provides&nbsp;the&nbsp;<a href="#Connectable">Connectable</a>&nbsp;interface&nbsp;(modeled&nbsp;as&nbsp;an&nbsp;abstract&nbsp;base<br>
+class),&nbsp;the&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;superclass,&nbsp;and&nbsp;the&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;subclass&nbsp;for<br>
+representing&nbsp;electronic&nbsp;devices&nbsp;in&nbsp;a&nbsp;smart&nbsp;home.&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;tracks<br>
+a&nbsp;brand&nbsp;and&nbsp;a&nbsp;power&nbsp;state,&nbsp;and&nbsp;can&nbsp;toggle&nbsp;that&nbsp;power&nbsp;state&nbsp;on&nbsp;or<br>
+off.&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;extends&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;and&nbsp;implements&nbsp;<a href="#Connectable">Connectable</a>&nbsp;to<br>
+add&nbsp;brightness&nbsp;control&nbsp;and&nbsp;Wi-Fi&nbsp;connectivity.<br>
+&nbsp;<br>
+In&nbsp;Java&nbsp;this&nbsp;design&nbsp;would&nbsp;use&nbsp;a&nbsp;public&nbsp;interface&nbsp;<a href="#Connectable">Connectable</a>,&nbsp;a<br>
+public&nbsp;class&nbsp;<a href="#SmartDevice">SmartDevice</a>,&nbsp;and&nbsp;a&nbsp;public&nbsp;class&nbsp;<a href="#SmartLight">SmartLight</a>,&nbsp;each&nbsp;in<br>
+its&nbsp;own&nbsp;file.&nbsp;In&nbsp;Python&nbsp;a&nbsp;single&nbsp;module&nbsp;can&nbsp;hold&nbsp;all&nbsp;three&nbsp;since<br>
+the&nbsp;language&nbsp;has&nbsp;no&nbsp;one-public-class-per-file&nbsp;rule.<br>
+&nbsp;<br>
+The&nbsp;Java&nbsp;equivalent&nbsp;of&nbsp;the&nbsp;class&nbsp;hierarchy&nbsp;would&nbsp;be:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;interface&nbsp;<a href="#Connectable">Connectable</a>&nbsp;{&nbsp;void&nbsp;connectToWiFi();&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;{&nbsp;...&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;extends&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;implements&nbsp;<a href="#Connectable">Connectable</a>&nbsp;{&nbsp;...&nbsp;}<br>
+&nbsp;<br>
+Typical&nbsp;usage&nbsp;would&nbsp;be:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;from&nbsp;smart_device&nbsp;import&nbsp;<a href="#SmartLight">SmartLight</a><br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;light:&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;=&nbsp;<a href="#SmartLight">SmartLight</a>(brand="Philips",&nbsp;brightness_level=75)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;light.toggle_power()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;light.connect_to_wifi()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;light.set_brightness_level(50)<br>
+&nbsp;<br>
+To&nbsp;run&nbsp;interactively:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;smart_device.py</span></p>
+<p>
+<table class="section">
+<tr class="decor index-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Classes</strong></td></tr>
+    
+<tr><td class="decor index-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl>
+<dt class="heading-text"><a href="abc.html#ABC">abc.ABC</a>(<a href="builtins.html#object">builtins.object</a>)
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="smart_device.html#Connectable">Connectable</a>
+</dt></dl>
+</dd>
+<dt class="heading-text"><a href="builtins.html#object">builtins.object</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="smart_device.html#SmartDevice">SmartDevice</a>
+</dt><dd>
+<dl>
+<dt class="heading-text"><a href="smart_device.html#SmartLight">SmartLight</a>(<a href="smart_device.html#SmartDevice">SmartDevice</a>, <a href="smart_device.html#Connectable">Connectable</a>)
+</dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="Connectable">class <strong>Connectable</strong></a>(<a href="abc.html#ABC">abc.ABC</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code">Interface&nbsp;for&nbsp;any&nbsp;device&nbsp;that&nbsp;can&nbsp;connect&nbsp;to&nbsp;Wi-Fi.<br>
+&nbsp;<br>
+<a href="#Connectable">Connectable</a>&nbsp;is&nbsp;modeled&nbsp;as&nbsp;a&nbsp;Python&nbsp;abstract&nbsp;base&nbsp;class&nbsp;to&nbsp;mirror<br>
+a&nbsp;Java&nbsp;interface.&nbsp;Any&nbsp;class&nbsp;that&nbsp;inherits&nbsp;from&nbsp;<a href="#Connectable">Connectable</a>&nbsp;must<br>
+provide&nbsp;its&nbsp;own&nbsp;implementation&nbsp;of&nbsp;connect_to_wifi,&nbsp;otherwise&nbsp;it<br>
+cannot&nbsp;be&nbsp;instantiated.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None.&nbsp;<a href="#Connectable">Connectable</a>&nbsp;defines&nbsp;behavior,&nbsp;not&nbsp;state.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="smart_device.html#Connectable">Connectable</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Connectable-connect_to_wifi"><strong>connect_to_wifi</strong></a>(self) -&gt; None</dt><dd><span class="code">Connect&nbsp;the&nbsp;device&nbsp;to&nbsp;a&nbsp;Wi-Fi&nbsp;network.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;an&nbsp;abstract&nbsp;method.&nbsp;Concrete&nbsp;subclasses&nbsp;must&nbsp;override<br>
+it&nbsp;and&nbsp;provide&nbsp;a&nbsp;real&nbsp;implementation.&nbsp;The&nbsp;Java&nbsp;equivalent<br>
+would&nbsp;be:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;connectToWiFi();<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset({'connect_to_wifi'})</dl>
+
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SmartDevice">class <strong>SmartDevice</strong></a>(<a href="builtins.html#object">builtins.object</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#SmartDevice">SmartDevice</a>(brand:&nbsp;str)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Represents&nbsp;a&nbsp;generic&nbsp;electronic&nbsp;device&nbsp;in&nbsp;the&nbsp;smart&nbsp;home.<br>
+&nbsp;<br>
+A&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;keeps&nbsp;track&nbsp;of&nbsp;the&nbsp;brand&nbsp;of&nbsp;the&nbsp;device&nbsp;and&nbsp;whether<br>
+it&nbsp;is&nbsp;currently&nbsp;powered&nbsp;on.&nbsp;The&nbsp;power&nbsp;state&nbsp;can&nbsp;be&nbsp;flipped&nbsp;using<br>
+toggle_power.&nbsp;This&nbsp;class&nbsp;is&nbsp;intended&nbsp;to&nbsp;be&nbsp;used&nbsp;as&nbsp;a&nbsp;superclass<br>
+for&nbsp;more&nbsp;specific&nbsp;device&nbsp;types&nbsp;such&nbsp;as&nbsp;<a href="#SmartLight">SmartLight</a>.<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;brand:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;manufacturer&nbsp;or&nbsp;brand&nbsp;of&nbsp;the&nbsp;device.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;power_on:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Current&nbsp;power&nbsp;state&nbsp;of&nbsp;the&nbsp;device.&nbsp;True&nbsp;if&nbsp;the&nbsp;device<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;on,&nbsp;False&nbsp;if&nbsp;it&nbsp;is&nbsp;off.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn">Methods defined here:<br>
+<dl><dt><a name="SmartDevice-__init__"><strong>__init__</strong></a>(self, brand: str) -&gt; None</dt><dd><span class="code">Create&nbsp;a&nbsp;new&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;with&nbsp;the&nbsp;given&nbsp;brand.<br>
+&nbsp;<br>
+The&nbsp;device&nbsp;always&nbsp;starts&nbsp;in&nbsp;the&nbsp;powered-off&nbsp;state.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;brand&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;manufacturer&nbsp;or&nbsp;brand&nbsp;of&nbsp;the&nbsp;device.</span></dd></dl>
+
+<dl><dt><a name="SmartDevice-get_brand"><strong>get_brand</strong></a>(self) -&gt; str</dt><dd><span class="code">Return&nbsp;the&nbsp;brand&nbsp;of&nbsp;the&nbsp;device.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;brand&nbsp;string&nbsp;that&nbsp;was&nbsp;supplied&nbsp;to&nbsp;the&nbsp;constructor.</span></dd></dl>
+
+<dl><dt><a name="SmartDevice-is_power_on"><strong>is_power_on</strong></a>(self) -&gt; bool</dt><dd><span class="code">Return&nbsp;whether&nbsp;the&nbsp;device&nbsp;is&nbsp;currently&nbsp;powered&nbsp;on.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;device&nbsp;is&nbsp;on,&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="SmartDevice-toggle_power"><strong>toggle_power</strong></a>(self) -&gt; None</dt><dd><span class="code">Flip&nbsp;the&nbsp;power&nbsp;state&nbsp;of&nbsp;the&nbsp;device.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;device&nbsp;is&nbsp;currently&nbsp;off,&nbsp;it&nbsp;will&nbsp;be&nbsp;turned&nbsp;on.&nbsp;If&nbsp;it<br>
+is&nbsp;currently&nbsp;on,&nbsp;it&nbsp;will&nbsp;be&nbsp;turned&nbsp;off.&nbsp;A&nbsp;short&nbsp;status<br>
+message&nbsp;is&nbsp;printed&nbsp;so&nbsp;the&nbsp;user&nbsp;can&nbsp;see&nbsp;what&nbsp;happened.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</span></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table> <p>
+<table class="section">
+<tr class="decor title-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><a name="SmartLight">class <strong>SmartLight</strong></a>(<a href="smart_device.html#SmartDevice">SmartDevice</a>, <a href="smart_device.html#Connectable">Connectable</a>)</td></tr>
+    
+<tr><td class="decor title-decor" rowspan=2><span class="code">&nbsp;&nbsp;&nbsp;</span></td>
+<td class="decor title-decor" colspan=2><span class="code"><a href="#SmartLight">SmartLight</a>(brand:&nbsp;str,&nbsp;brightness_level:&nbsp;int)&nbsp;-&amp;gt;&nbsp;None<br>
+&nbsp;<br>
+Represents&nbsp;a&nbsp;Wi-Fi&nbsp;connected&nbsp;smart&nbsp;light&nbsp;bulb.<br>
+&nbsp;<br>
+A&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;is&nbsp;a&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;that&nbsp;can&nbsp;also&nbsp;connect&nbsp;to&nbsp;Wi-Fi.<br>
+It&nbsp;adds&nbsp;a&nbsp;brightness&nbsp;level&nbsp;on&nbsp;top&nbsp;of&nbsp;the&nbsp;brand&nbsp;and&nbsp;power-on<br>
+state&nbsp;that&nbsp;it&nbsp;inherits&nbsp;from&nbsp;<a href="#SmartDevice">SmartDevice</a>.&nbsp;The&nbsp;brightness&nbsp;is<br>
+measured&nbsp;on&nbsp;a&nbsp;0&nbsp;to&nbsp;100&nbsp;scale.<br>
+&nbsp;<br>
+In&nbsp;Java&nbsp;the&nbsp;class&nbsp;declaration&nbsp;would&nbsp;be:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;extends&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;implements&nbsp;<a href="#Connectable">Connectable</a><br>
+&nbsp;<br>
+In&nbsp;Python&nbsp;the&nbsp;same&nbsp;relationship&nbsp;is&nbsp;expressed&nbsp;with&nbsp;multiple<br>
+inheritance:&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;first&nbsp;(the&nbsp;superclass&nbsp;we&nbsp;extend),<br>
+<a href="#Connectable">Connectable</a>&nbsp;second&nbsp;(the&nbsp;interface&nbsp;we&nbsp;implement).<br>
+&nbsp;<br>
+Attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;brand:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inherited&nbsp;from&nbsp;<a href="#SmartDevice">SmartDevice</a>.&nbsp;The&nbsp;manufacturer&nbsp;of&nbsp;the&nbsp;light.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;power_on:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Inherited&nbsp;from&nbsp;<a href="#SmartDevice">SmartDevice</a>.&nbsp;Current&nbsp;power&nbsp;state.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;brightness_level:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;How&nbsp;bright&nbsp;the&nbsp;light&nbsp;is,&nbsp;on&nbsp;a&nbsp;0&nbsp;to&nbsp;100&nbsp;scale.<br>&nbsp;</span></td></tr>
+<tr><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt>Method resolution order:</dt>
+<dd><a href="smart_device.html#SmartLight">SmartLight</a></dd>
+<dd><a href="smart_device.html#SmartDevice">SmartDevice</a></dd>
+<dd><a href="smart_device.html#Connectable">Connectable</a></dd>
+<dd><a href="abc.html#ABC">abc.ABC</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SmartLight-__init__"><strong>__init__</strong></a>(self, brand: str, brightness_level: int) -&gt; None</dt><dd><span class="code">Create&nbsp;a&nbsp;new&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;with&nbsp;a&nbsp;brand&nbsp;and&nbsp;brightness&nbsp;level.<br>
+&nbsp;<br>
+Calls&nbsp;the&nbsp;<a href="#SmartDevice">SmartDevice</a>&nbsp;constructor&nbsp;with&nbsp;super()&nbsp;so&nbsp;the&nbsp;brand<br>
+and&nbsp;power&nbsp;state&nbsp;are&nbsp;initialized&nbsp;in&nbsp;the&nbsp;superclass.&nbsp;This&nbsp;is<br>
+the&nbsp;Python&nbsp;equivalent&nbsp;of&nbsp;calling&nbsp;super(p_brand)&nbsp;in&nbsp;a&nbsp;Java<br>
+subclass&nbsp;constructor.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;brand&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;manufacturer&nbsp;or&nbsp;brand&nbsp;of&nbsp;the&nbsp;light.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;brightness_level&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initial&nbsp;brightness&nbsp;on&nbsp;a&nbsp;0&nbsp;to&nbsp;100&nbsp;scale.</span></dd></dl>
+
+<dl><dt><a name="SmartLight-connect_to_wifi"><strong>connect_to_wifi</strong></a>(self) -&gt; None</dt><dd><span class="code">Connect&nbsp;the&nbsp;smart&nbsp;light&nbsp;to&nbsp;a&nbsp;Wi-Fi&nbsp;network.<br>
+&nbsp;<br>
+Provides&nbsp;the&nbsp;concrete&nbsp;implementation&nbsp;of&nbsp;the&nbsp;abstract&nbsp;method<br>
+declared&nbsp;on&nbsp;the&nbsp;<a href="#Connectable">Connectable</a>&nbsp;interface.&nbsp;Prints&nbsp;a&nbsp;message<br>
+showing&nbsp;which&nbsp;brand&nbsp;of&nbsp;light&nbsp;is&nbsp;connecting.&nbsp;This&nbsp;is&nbsp;the<br>
+polymorphism&nbsp;step&nbsp;required&nbsp;by&nbsp;the&nbsp;assignment.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</span></dd></dl>
+
+<dl><dt><a name="SmartLight-get_brightness_level"><strong>get_brightness_level</strong></a>(self) -&gt; int</dt><dd><span class="code">Return&nbsp;the&nbsp;current&nbsp;brightness&nbsp;level&nbsp;of&nbsp;the&nbsp;light.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;current&nbsp;brightness&nbsp;on&nbsp;a&nbsp;0&nbsp;to&nbsp;100&nbsp;scale.</span></dd></dl>
+
+<dl><dt><a name="SmartLight-set_brightness_level"><strong>set_brightness_level</strong></a>(self, new_level: int) -&gt; bool</dt><dd><span class="code">Update&nbsp;the&nbsp;brightness&nbsp;level&nbsp;of&nbsp;the&nbsp;light.<br>
+&nbsp;<br>
+The&nbsp;new&nbsp;level&nbsp;must&nbsp;be&nbsp;between&nbsp;0&nbsp;and&nbsp;100&nbsp;inclusive.&nbsp;If&nbsp;it&nbsp;is<br>
+out&nbsp;of&nbsp;range,&nbsp;the&nbsp;brightness&nbsp;is&nbsp;not&nbsp;changed&nbsp;and&nbsp;the&nbsp;method<br>
+returns&nbsp;False.<br>
+&nbsp;<br>
+Parameters:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;new_level&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;new&nbsp;brightness&nbsp;level&nbsp;on&nbsp;a&nbsp;0&nbsp;to&nbsp;100&nbsp;scale.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;brightness&nbsp;was&nbsp;updated,&nbsp;False&nbsp;if&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;requested&nbsp;level&nbsp;was&nbsp;out&nbsp;of&nbsp;range.</span></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__abstractmethods__</strong> = frozenset()</dl>
+
+<hr>
+Methods inherited from <a href="smart_device.html#SmartDevice">SmartDevice</a>:<br>
+<dl><dt><a name="SmartLight-get_brand"><strong>get_brand</strong></a>(self) -&gt; str</dt><dd><span class="code">Return&nbsp;the&nbsp;brand&nbsp;of&nbsp;the&nbsp;device.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;brand&nbsp;string&nbsp;that&nbsp;was&nbsp;supplied&nbsp;to&nbsp;the&nbsp;constructor.</span></dd></dl>
+
+<dl><dt><a name="SmartLight-is_power_on"><strong>is_power_on</strong></a>(self) -&gt; bool</dt><dd><span class="code">Return&nbsp;whether&nbsp;the&nbsp;device&nbsp;is&nbsp;currently&nbsp;powered&nbsp;on.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;True&nbsp;if&nbsp;the&nbsp;device&nbsp;is&nbsp;on,&nbsp;False&nbsp;otherwise.</span></dd></dl>
+
+<dl><dt><a name="SmartLight-toggle_power"><strong>toggle_power</strong></a>(self) -&gt; None</dt><dd><span class="code">Flip&nbsp;the&nbsp;power&nbsp;state&nbsp;of&nbsp;the&nbsp;device.<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;device&nbsp;is&nbsp;currently&nbsp;off,&nbsp;it&nbsp;will&nbsp;be&nbsp;turned&nbsp;on.&nbsp;If&nbsp;it<br>
+is&nbsp;currently&nbsp;on,&nbsp;it&nbsp;will&nbsp;be&nbsp;turned&nbsp;off.&nbsp;A&nbsp;short&nbsp;status<br>
+message&nbsp;is&nbsp;printed&nbsp;so&nbsp;the&nbsp;user&nbsp;can&nbsp;see&nbsp;what&nbsp;happened.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None</span></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="smart_device.html#SmartDevice">SmartDevice</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><span class="code">dictionary&nbsp;for&nbsp;instance&nbsp;variables</span></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><span class="code">list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object</span></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-main"><strong>main</strong></a>() -&gt; None</dt><dd><span class="code">Run&nbsp;the&nbsp;interactive&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;menu&nbsp;loop.<br>
+&nbsp;<br>
+Displays&nbsp;a&nbsp;menu&nbsp;that&nbsp;lets&nbsp;the&nbsp;user&nbsp;create&nbsp;a&nbsp;<a href="#SmartLight">SmartLight</a>,&nbsp;toggle<br>
+its&nbsp;power,&nbsp;connect&nbsp;it&nbsp;to&nbsp;Wi-Fi,&nbsp;change&nbsp;its&nbsp;brightness&nbsp;level,<br>
+view&nbsp;its&nbsp;current&nbsp;state,&nbsp;or&nbsp;exit&nbsp;the&nbsp;program.&nbsp;The&nbsp;loop&nbsp;continues<br>
+until&nbsp;the&nbsp;user&nbsp;selects&nbsp;the&nbsp;exit&nbsp;option.<br>
+&nbsp;<br>
+Notes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;must&nbsp;be&nbsp;created&nbsp;via&nbsp;option&nbsp;1&nbsp;before&nbsp;the&nbsp;other<br>
+&nbsp;&nbsp;&nbsp;&nbsp;options&nbsp;can&nbsp;be&nbsp;used,&nbsp;since&nbsp;those&nbsp;options&nbsp;operate&nbsp;on&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;most&nbsp;recently&nbsp;created&nbsp;<a href="#SmartLight">SmartLight</a>&nbsp;instance.</span></dd></dl>
+</td></tr></table>
+</body></html>
